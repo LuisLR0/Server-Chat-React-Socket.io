@@ -23,10 +23,8 @@ class MongoDBConexion {
             await this._client.connect()
             console.log("MongoDB Conectado")
             
-            const db = this._client.db(this.nombreBD)
+            this._db = this._client.db(this.nombreBD)
             console.log(`Base de datos seleccionado: ${this.nombreBD}`)
-    
-            this._db = db
 
         } catch (error) {
             console.log("Hubo un error:")
@@ -96,8 +94,6 @@ class MongoDBConexion {
             const coleccion = this._db.collection('mensajes')
 
             const idMensaje = new ObjectId(id)
-
-            console.log(mensaje)
 
             await coleccion.updateOne({"_id": idMensaje}, { $set: { "mensaje": mensaje } })
             
