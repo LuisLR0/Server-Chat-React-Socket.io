@@ -5,9 +5,8 @@ import bdMongo from './config.js';
 const httpServer = createServer()
 const io = new Server(httpServer, {
     cors: {
-        origin: 'http://192.168.0.100:5173' // COLOCAL LOCAL HOST
-    },
-    connectionStateRecovery: {}
+        origin: 'http://localhost:5173'
+    }
 });
 
 let mensajes;
